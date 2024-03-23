@@ -1,0 +1,11 @@
+svg {
+  height: 15px;
+}
+
+svg path {
+  fill: white;
+}
+
+.group:hover svg path {
+  fill: #004282;
+}
