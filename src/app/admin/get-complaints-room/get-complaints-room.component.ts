@@ -44,4 +44,6 @@ export class GetComplaintsRoomComponent {
   constructor(private titleService: Title) {
     this.titleService.setTitle('Get Complaints Room');
   }
+
+  fixComplaint(complaint: Complaint) {}
 }

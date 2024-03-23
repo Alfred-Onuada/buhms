@@ -25,6 +25,8 @@
       <p class="text-gray-600">Fixed: {{ complaint.isFixed ? 'Yes' : 'No' }}</p>
       <p class="text-gray-600">Room ID: {{ complaint.roomId }}</p>
       <p class="text-gray-600">Student ID: {{ complaint.studentId }}</p>
+
+      <button class="bg-blue-500 text-white rounded-md px-4 py-2 mt-2" (click)="fixComplaint(complaint)">Fix</button>
     </div>
     <!-- If no complaints are available, display a message -->
     <div *ngIf="!complaints || complaints.length === 0" class="text-gray-600 text-center">
