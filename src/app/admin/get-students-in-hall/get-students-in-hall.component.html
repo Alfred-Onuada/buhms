@@ -1,1 +1,25 @@
-<p>get-students-in-hall works!</p>
+<div class="flex justify-center items-center flex-col">
+  <h3 class="font-semibold text-2xl mb-5">Users</h3>
+  <div class="flex flex-col mb-5">
+    <label for="hallId">Select Hall ID</label>
+    <select id="hallId" name="hallId" class="border border-gray-300 rounded-md p-2 w-[500px]">
+      <option value="hall1">Hall 1</option>
+      <option value="hall2">Hall 2</option>
+      <option value="hall3">Hall 3</option>
+    </select>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-[100%]">
+    <!-- Loop through each user using *ngFor directive -->
+    <div *ngFor="let user of students" class="bg-white rounded-lg shadow-md p-4">
+      <h4 class="font-semibold text-lg mb-2">{{ user.firstName }} {{ user.lastName }}</h4>
+      <p class="text-gray-600 mb-2">Address: {{ user.address }}</p>
+      <p class="text-gray-600">Matric: {{ user.matric }}</p>
+      <p class="text-gray-600">Active: {{ user.isActive ? 'Yes' : 'No' }}</p>
+      <p class="text-gray-600">Points: {{ user.points }}</p>
+    </div>
+    <!-- If no students are available, display a message -->
+    <div *ngIf="!students || students.length === 0" class="text-gray-600 text-center">
+      No users available.
+    </div>
+  </div>
+</div>

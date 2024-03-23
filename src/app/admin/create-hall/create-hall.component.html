@@ -1,1 +1,29 @@
-<p>create-hall works!</p>
+<div class="flex justify-center items-center flex-col">
+  <h3 class="font-semibold text-2xl mb-5">Create a Hall</h3>
+  <form>
+    <div class="flex flex-col mb-5">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" class="border border-gray-300 rounded-md p-2 w-[500px]">
+    </div>
+    <div class="flex flex-col mb-5">
+      <label for="description">Description</label>
+      <input type="text" id="description" name="description" class="border border-gray-300 rounded-md p-2 w-[500px]">
+    </div>
+    <div class="flex flex-col mb-5">
+      <label for="type">Type</label>
+      <select id="type" name="type" class="border border-gray-300 rounded-md p-2 w-[500px]">
+        <option value="classic">Classic</option>
+        <option value="premium">Premium</option>
+        <option value="regular">Regular</option>
+      </select>
+    </div>
+    <div class="flex flex-col mb-5">
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" class="border border-gray-300 rounded-md p-2 w-[500px]">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <button type="submit" class="bg-[#004282] text-white rounded-md p-2 w-[500px]">Create Hall</button>
+  </form>
+</div>

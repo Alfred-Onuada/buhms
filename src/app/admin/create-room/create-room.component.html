@@ -1,1 +1,22 @@
-<p>create-room works!</p>
+<div class="flex justify-center items-center flex-col">
+  <h3 class="font-semibold text-2xl mb-5">Create a Room</h3>
+  <form>
+    <div class="flex flex-col mb-5">
+      <label for="hallId">Hall ID</label>
+      <select id="hallId" name="hallId" class="border border-gray-300 rounded-md p-2 w-[500px]">
+        <option value="hall1">Hall 1</option>
+        <option value="hall2">Hall 2</option>
+        <option value="hall3">Hall 3</option>
+      </select>
+    </div>
+    <div class="flex flex-col mb-5">
+      <label for="roomNumber">Room Number</label>
+      <input type="text" id="roomNumber" name="roomNumber" class="border border-gray-300 rounded-md p-2 w-[500px]">
+    </div>
+    <div class="flex flex-col mb-5">
+      <label for="numberOfBeds">Number of Beds</label>
+      <input type="number" id="numberOfBeds" name="numberOfBeds" class="border border-gray-300 rounded-md p-2 w-[500px]">
+    </div>
+    <button type="submit" class="bg-[#004282] text-white rounded-md p-2 w-[500px]">Create Room</button>
+  </form>
+</div>

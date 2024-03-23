@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-room',
@@ -9,5 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./create-room.component.css']
 })
 export class CreateRoomComponent {
-
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('Create Room');
+  }
 }
