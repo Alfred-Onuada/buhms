@@ -27,7 +27,6 @@ export class AdminDashboardComponent {
   ) {
     this.titleService.setTitle('Admin Dashboard');
 
-    this.currentPage = typeof this.router.url.split('#')[1] === 'undefined' ? 'home' : this.router.url.split('#')[1];
-    console.log(this.currentPage)
+    this.currentPage = typeof this.router.url.split('#')[1] === 'undefined' ? 'createHall' : this.router.url.split('#')[1];
   }
 }
