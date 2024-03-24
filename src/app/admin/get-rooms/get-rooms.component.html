@@ -1,11 +1,16 @@
 <div class="flex justify-center items-center flex-col">
   <h3 class="font-semibold text-2xl mb-5">Rooms</h3>
+  <div *ngIf="hasError" class="bg-red-500 text-white py-3 px-5 my-3 rounded-md text-center">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="hasSuccess" class="bg-green-500 text-white py-3 px-5 my-3 rounded-md text-center">
+    {{ successMessage }}
+  </div>
   <div class="flex flex-col mb-5">
     <label for="hallId">Select Hall ID</label>
-    <select id="hallId" name="hallId" class="border border-gray-300 rounded-md p-2 w-[500px]">
-      <option value="hall1">Hall 1</option>
-      <option value="hall2">Hall 2</option>
-      <option value="hall3">Hall 3</option>
+    <select id="hallId" name="hallId" class="border border-gray-300 rounded-md p-2 w-[500px]"
+      (change)="fetchRooms($event)">
+      <option *ngFor="let hall of halls" [value]="hall.id">{{hall.name}}</option>
     </select>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-[100%]">

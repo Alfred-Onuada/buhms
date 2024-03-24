@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { ApiResponse, GetHallsResponse } from '../interfaces/response';
+import { ApiResponse, GetHallsResponse, GetRoomsResponse } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +30,15 @@ export class GeneralService {
 
   createRoom(data: any): Observable<ApiResponse> {
     return this.http.post<ApiResponse>(`${env.apiUrl}/Hall/createRoom?HallId=${data.hallId}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  }
+
+  getRooms(hallId: string): Observable<GetRoomsResponse> {
+    return this.http.get<GetRoomsResponse>(`${env.apiUrl}/Hall/${hallId}/GetRooms`, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
