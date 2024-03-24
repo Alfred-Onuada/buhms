@@ -1,6 +1,7 @@
 import { Complaint } from "./complaint";
 import { Hall } from "./hall";
 import { Room } from "./room";
+import { Student } from "./student";
 
 export interface ApiResponse {
   statusCode: number;
@@ -33,6 +34,13 @@ export interface GetComplaintsResponse {
 export interface fixComplaintResponse {
   statusCode: number;
   data: Complaint[];
+  message: string;
+  status: boolean;
+}
+
+export interface GetStudentsResponse {
+  statusCode: number;
+  data: Student[];
   message: string;
   status: boolean;
 }
