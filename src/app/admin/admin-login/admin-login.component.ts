@@ -46,6 +46,7 @@ export class AdminLoginComponent {
 
         // store token in local storage
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userType', 'admin');
 
         this.router.navigate(['/admin/dashboard']);
       },

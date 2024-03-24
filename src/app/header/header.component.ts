@@ -9,5 +9,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  userType = ''
 
+  constructor() {
+    this.userType = localStorage.getItem('userType') || '';
+  }
 }

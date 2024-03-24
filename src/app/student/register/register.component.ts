@@ -54,6 +54,7 @@ export class RegisterComponent {
         
         // store token in local storage
         localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userType', 'student');
 
         this.router.navigate(['/student/dashboard']);
       },
