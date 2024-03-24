@@ -81,4 +81,22 @@ export class GeneralService {
       }
     });
   }
+
+  pickRoom(data: any): Observable<ApiResponse> {
+    return this.http.patch<ApiResponse>(`${env.apiUrl}/Hall/AssignRoom`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  }
+
+  createComplaint(data: any): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${env.apiUrl}/Hall/createComplaint`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  }
 }
