@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { GeneralService } from 'src/app/services/general.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-hall',
@@ -10,7 +12,69 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./create-hall.component.css']
 })
 export class CreateHallComponent {
-  constructor(private titleService: Title) {
+  constructor(
+    private titleService: Title,
+    private generalService: GeneralService,
+    private router: Router
+  ) {
     this.titleService.setTitle('Create Hall');
   }
+
+  hasError = false;
+  errorMessage = '';
+  hasSuccess = false;
+  successMessage = '';
+
+  handleCreateHall(event: any) {
+    // get all fields from the form
+    const form = event.target;
+    const name = form.name.value;
+    const description = form.description.value;
+    const type = form.type.value;
+    const gender = form.gender.value;
+
+    // put all fields in an object
+    const data = {
+      name,
+      description,
+      type,
+      gender,
+    };
+
+    console.log(data);
+
+    // send the object to the server
+    this.generalService.createHall(data).subscribe({
+      next: (response) => {
+        console.log(response);
+
+        this.hasSuccess = true;
+        this.successMessage = 'Hall created successfully.';
+
+        event.target.reset();
+
+        setTimeout(() => {
+          this.hasSuccess = false;
+          this.successMessage = '';
+        }, 5000);
+      },
+      error: (error) => {
+        console.error(error);
+
+        if (error.status === 401) {
+          this.router.navigate(['/admin/login']);
+        }
+
+        this.hasError = true;
+        this.errorMessage = 'Hall creation failed try again';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 5000);
+      },
+    });
+
+    event.preventDefault();
+  };
 }

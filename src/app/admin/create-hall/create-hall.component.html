@@ -1,6 +1,12 @@
 <div class="flex justify-center items-center flex-col">
   <h3 class="font-semibold text-2xl mb-5">Create a Hall</h3>
-  <form>
+  <div *ngIf="hasError" class="bg-red-500 text-white py-3 px-5 my-3 rounded-md text-center">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="hasSuccess" class="bg-green-500 text-white py-3 px-5 my-3 rounded-md text-center">
+    {{ successMessage }}
+  </div>
+  <form (submit)="handleCreateHall($event)">
     <div class="flex flex-col mb-5">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" class="border border-gray-300 rounded-md p-2 w-[500px]">
@@ -12,16 +18,15 @@
     <div class="flex flex-col mb-5">
       <label for="type">Type</label>
       <select id="type" name="type" class="border border-gray-300 rounded-md p-2 w-[500px]">
-        <option value="classic">Classic</option>
-        <option value="premium">Premium</option>
-        <option value="regular">Regular</option>
+        <option value="Classic">Classic</option>
+        <option value="Premium">Premium</option>
       </select>
     </div>
     <div class="flex flex-col mb-5">
       <label for="gender">Gender</label>
       <select id="gender" name="gender" class="border border-gray-300 rounded-md p-2 w-[500px]">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
       </select>
     </div>
     <button type="submit" class="bg-[#004282] text-white rounded-md p-2 w-[500px]">Create Hall</button>
