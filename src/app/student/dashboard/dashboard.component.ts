@@ -24,4 +24,10 @@ export class DashboardComponent {
 
     this.currentPage = typeof this.router.url.split('#')[1] === 'undefined' ? 'createComplaint' : this.router.url.split('#')[1];
   }
+
+  signout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.router.navigate(['/']);
+  }
 }
