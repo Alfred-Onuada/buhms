@@ -4,13 +4,14 @@ import { CreateComplaintComponent } from "../create-complaint/create-complaint.c
 import { PickRoomComponent } from "../pick-room/pick-room.component";
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { GetComplaintsRoomComponent } from "../../admin/get-complaints-room/get-complaints-room.component";
 
 @Component({
     selector: 'app-dashboard',
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.css'],
-    imports: [CommonModule, CreateComplaintComponent, PickRoomComponent]
+    imports: [CommonModule, CreateComplaintComponent, PickRoomComponent, GetComplaintsRoomComponent]
 })
 export class DashboardComponent {
 
