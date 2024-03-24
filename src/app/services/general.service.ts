@@ -63,4 +63,13 @@ export class GeneralService {
       }
     });
   }
+
+  getComplaintsRoom(roomId: string): Observable<GetComplaintsResponse> {
+    return this.http.get<GetComplaintsResponse>(`${env.apiUrl}/Hall/GetComplaints/${roomId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  }
 }

@@ -10,6 +10,7 @@
     <label for="hallId">Select Hall ID</label>
     <select id="hallId" name="hallId" class="border border-gray-300 rounded-md p-2 w-[500px]"
       (change)="fetchRooms($event)">
+      <option value="">Select Hall</option>
       <option *ngFor="let hall of halls" [value]="hall.id">{{hall.name}}</option>
     </select>
   </div>
