@@ -10,13 +10,14 @@ import { GetComplaintsRoomComponent } from "../get-complaints-room/get-complaint
 import { GetHallsComponent } from "../get-halls/get-halls.component";
 import { GetRoomsComponent } from "../get-rooms/get-rooms.component";
 import { GetStudentsInHallComponent } from "../get-students-in-hall/get-students-in-hall.component";
+import { RegisterAdminComponent } from "../register-admin/register-admin.component";
 
 @Component({
     selector: 'app-admin-dashboard',
     standalone: true,
     templateUrl: './admin-dashboard.component.html',
     styleUrls: ['./admin-dashboard.component.css'],
-    imports: [CommonModule, HeaderComponent, CreateHallComponent, CreateRoomComponent, GetComplaintsHallComponent, GetComplaintsRoomComponent, GetHallsComponent, GetRoomsComponent, GetStudentsInHallComponent]
+    imports: [CommonModule, HeaderComponent, CreateHallComponent, CreateRoomComponent, GetComplaintsHallComponent, GetComplaintsRoomComponent, GetHallsComponent, GetRoomsComponent, GetStudentsInHallComponent, RegisterAdminComponent]
 })
 export class AdminDashboardComponent {
   currentPage: string = '';

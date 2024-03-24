@@ -24,8 +24,11 @@ export class CreateHallComponent {
   errorMessage = '';
   hasSuccess = false;
   successMessage = '';
+  loading = false;
 
   handleCreateHall(event: any) {
+    this.loading = true;
+
     // get all fields from the form
     const form = event.target;
     const name = form.name.value;
@@ -72,7 +75,12 @@ export class CreateHallComponent {
           this.hasError = false;
           this.errorMessage = '';
         }, 5000);
+
+        this.loading = false;
       },
+      complete: () => {
+        this.loading = false;
+      }
     });
 
     event.preventDefault();

@@ -25,8 +25,11 @@ export class RegisterComponent {
 
   hasError = false;
   errorMessage = '';
+  loading = false;
 
   handleRegister(event: any) {
+    this.loading = true;
+
     const form = event.target;
     const firstName = form.firstName.value;
     const lastName = form.lastName.value;
@@ -68,6 +71,11 @@ export class RegisterComponent {
           this.hasError = false;
           this.errorMessage = '';
         }, 3000);
+
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
 

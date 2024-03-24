@@ -23,6 +23,7 @@ export class CreateRoomComponent implements OnInit{
   errorMessage = '';
   hasSuccess = false;
   successMessage = '';
+  loading = false;
 
   halls: Hall[] = []
 
@@ -48,6 +49,7 @@ export class CreateRoomComponent implements OnInit{
   }
 
   handleCreateRoom(event: any) {
+    this.loading = true;
     // get all fields from the form
     const form = event.target;
     const numberOfBeds = form.numberOfBeds.value;
@@ -88,6 +90,11 @@ export class CreateRoomComponent implements OnInit{
           this.hasError = false;
           this.errorMessage = '';
         }, 5000);
+
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
 

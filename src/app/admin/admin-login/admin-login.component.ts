@@ -23,9 +23,11 @@ export class AdminLoginComponent {
 
   hasError = false;
   errorMessage = '';
+  loading = false;
 
 
   handleLogin(event: any) {
+    this.loading = true;
     // get all fields from the form
     const form = event.target;
     const password = form.password.value;
@@ -60,6 +62,11 @@ export class AdminLoginComponent {
           this.hasError = false;
           this.errorMessage = '';
         }, 3000);
+
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
 

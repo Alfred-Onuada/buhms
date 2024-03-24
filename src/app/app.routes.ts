@@ -13,7 +13,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'student/dashboard', component: DashboardComponent },
   { path: 'admin', redirectTo: 'admin/login', pathMatch: 'full'},
-  { path: 'admin/register', component: RegisterAdminComponent },
   { path: 'admin/login', component: AdminLoginComponent },
   { path: 'admin/dashboard', component: AdminDashboardComponent },
 ];

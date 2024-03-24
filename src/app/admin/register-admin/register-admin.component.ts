@@ -16,6 +16,7 @@ export class RegisterAdminComponent {
   title = 'Register Admin';
   errorMessage = '';
   hasError = false;
+  loading = false;
 
   constructor(
     private titleService: Title,
@@ -26,6 +27,8 @@ export class RegisterAdminComponent {
   }
 
   handleAdminRegistration(event: any) {
+    this.loading = true;
+
     // get all fields from the form
     const form = event.target;
     const userName = form.userName.value;
@@ -68,6 +71,11 @@ export class RegisterAdminComponent {
           this.hasError = false;
           this.errorMessage = '';
         }, 3000);
+
+        this.loading = false;
+      },
+      complete: () => {
+        this.loading = false;
       }
     });
 

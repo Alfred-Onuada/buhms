@@ -19,8 +19,11 @@ export class CreateComplaintComponent {
     errorMessage = '';
     hasSuccess = false;
     successMessage = '';
+    loading = false;
 
     handleCreateComplaint(event: any) {
+        this.loading = true;
+        
         const form = event.target;
         const title = form.title.value;
         const description = form.description.value;
@@ -54,6 +57,13 @@ export class CreateComplaintComponent {
                 this.hasError = false;
                 this.errorMessage = '';
                 }, 3000);
+
+                event.target.reset();
+                this.loading = false;
+            },
+            complete: () => {
+                event.target.reset();
+                this.loading = false;
             }
         });
 

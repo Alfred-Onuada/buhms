@@ -65,6 +65,15 @@
       </li>
       <li>
         <a
+          href="/admin/dashboard/#registerAdmin"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-white hover:text-[#004282] group"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Register An Admin</span>
+        </a>
+      </li>
+      <li>
+        <a
           href="/admin/dashboard/#getRoomsInHall"
           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-white hover:text-[#004282] group"
         >
@@ -122,6 +131,8 @@
 
     <app-create-room *ngIf="currentPage === 'createRoom'"></app-create-room>
     <app-get-rooms *ngIf="currentPage === 'getRoomsInHall'"></app-get-rooms>
+
+    <app-register-admin *ngIf="currentPage === 'registerAdmin'"></app-register-admin>
 
     <app-get-students-in-hall *ngIf="currentPage === 'getStudentsInHall'"></app-get-students-in-hall>
 
