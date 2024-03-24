@@ -1,10 +1,19 @@
-<header class="flex justify-between items-center h-[60px] px-[50px] bg-[#004282]">
-  <h1 class="text-[white] text-xl">BUHMS</h1>
-  <div>
-    <a href="" class="mr-[40px] text-xl font-normal text-white">Home</a>
-    <a href="/admin" class="mr-[40px] text-xl font-normal text-white">Admin Page</a>
-    <a href="/admin/dashboard" class="mr-[40px] text-xl font-normal text-white">Dashboard</a>
-    <a href="/register" class="mr-[40px] text-xl font-normal text-white">Register</a>
-    <a href="/login" class=" text-xl font-normal text-white">Login</a>
+<header class="flex justify-between items-center h-[60px] px-[20px] md:px-[50px] bg-[#004282]">
+  <h1 class="text-white text-xl">BUHMS</h1>
+  <div class="md:flex hidden" id="navLinks">
+    <a href="" class="mr-[20px] text-xl font-normal text-white">Home</a>
+    <a href="/admin" class="mr-[20px] text-xl font-normal text-white">Admin Login</a>
+    <a href="/admin/dashboard" class="mr-[20px] text-xl font-normal text-white">Dashboard</a>
+    <a href="/admin/register" class="mr-[20px] text-xl font-normal text-white">Register An Admin</a>
+    <a href="/register" class="mr-[20px] text-xl font-normal text-white">Register</a>
+    <a href="/login" class="text-xl font-normal text-white">Login</a>
+  </div>
+  <!-- Hamburger menu icon for smaller screens -->
+  <div class="md:hidden">
+    <button id="menu-toggle" class="text-white focus:outline-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 4a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm0 6a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm0 6a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z"/>
+      </svg>
+    </button>
   </div>
 </header>
