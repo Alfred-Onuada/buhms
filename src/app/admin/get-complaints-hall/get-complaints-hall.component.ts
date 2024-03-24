@@ -45,4 +45,31 @@ export class GetComplaintsHallComponent implements OnInit {
       }
     });
   }
+
+  fixComplaint(complaintId: string) {
+    this.generalService.fixComplaint(complaintId).subscribe((response) => {
+      if (response.status) {
+        this.hasSuccess = true;
+        this.successMessage = response.message;
+
+        // remove the complaint from the list
+        this.complaints = this.complaints.filter((complaint) => complaint.id !== complaintId);
+
+        // remove the success message after 3 seconds
+        setTimeout(() => {
+          this.hasSuccess = false;
+          this.successMessage = '';
+        }, 3000);
+      } else {
+        this.hasError = true;
+        this.errorMessage = response.message;
+
+        // remove the error message after 3 seconds
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
+      }
+    });
+  }
 }

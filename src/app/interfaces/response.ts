@@ -29,3 +29,10 @@ export interface GetComplaintsResponse {
   message: string;
   status: boolean;
 }
+
+export interface fixComplaintResponse {
+  statusCode: number;
+  data: Complaint[];
+  message: string;
+  status: boolean;
+}
