@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment as env } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { ApiResponse, GetHallsResponse, GetRoomsResponse } from '../interfaces/response';
+import { ApiResponse, GetComplaintsResponse, GetHallsResponse, GetRoomsResponse } from '../interfaces/response';
 
 @Injectable({
   providedIn: 'root'
@@ -45,4 +45,13 @@ export class GeneralService {
       }
     });
   }
+
+  getComplaints(hallId: string): Observable<GetComplaintsResponse> {
+    return this.http.get<GetComplaintsResponse>(`${env.apiUrl}/Hall/GetAllComplaints/${hallId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  };
 }

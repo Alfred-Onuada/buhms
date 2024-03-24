@@ -1,3 +1,4 @@
+import { Complaint } from "./complaint";
 import { Hall } from "./hall";
 import { Room } from "./room";
 
@@ -18,6 +19,13 @@ export interface GetHallsResponse {
 export interface GetRoomsResponse {
   statusCode: number;
   data: Room[];
+  message: string;
+  status: boolean;
+}
+
+export interface GetComplaintsResponse {
+  statusCode: number;
+  data: Complaint[];
   message: string;
   status: boolean;
 }
