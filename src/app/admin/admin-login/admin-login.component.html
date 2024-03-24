@@ -1,9 +1,12 @@
 <app-header></app-header>
-<div class="grid grid-cols-2">
-  <img src="assets/login-image.webp" alt="University Picture" class="min-h-[93vh]">
+<div class="grid grid-cols-1 md:grid-cols-2 h-[100%]">
+  <img src="assets/login-image.webp" alt="University Picture" class="hidden md:block min-h-[93vh]">
   <div class="flex justify-center items-center flex-col">
     <h3 class="font-semibold text-2xl mb-5">Let's get you back into you account</h3>
-    <form>
+    <div *ngIf="hasError" class="bg-red-500 text-white py-3 px-5 my-3 rounded-md text-center">
+      {{ errorMessage }}
+    </div>
+    <form (submit)="handleLogin($event)">
       <div class="flex flex-col mb-5">
         <label for="email">Email</label>
         <input type="email" id="email" name="email" class="border border-gray-300 rounded-md p-2 w-[500px]">

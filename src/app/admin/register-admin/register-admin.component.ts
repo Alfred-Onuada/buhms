@@ -55,13 +55,18 @@ export class RegisterAdminComponent {
         // store token in local storage
         localStorage.setItem('token', JSON.stringify(response.data));
 
-        // this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/admin/dashboard']);
       },
       error: (error) => {
         console.error(error);
 
         this.hasError = true;
         this.errorMessage = 'Registration failed. Please try again.';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
 
