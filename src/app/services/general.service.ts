@@ -27,4 +27,13 @@ export class GeneralService {
       }
     });
   }
+
+  createRoom(data: any): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(`${env.apiUrl}/Hall/createRoom?HallId=${data.hallId}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + localStorage.getItem('token') || '',
+      }
+    });
+  }
 }
