@@ -21,10 +21,28 @@ export class GetHallsComponent implements OnInit {
     this.titleService.setTitle('Get Halls');
   }
 
+  hasError = false;
+  errorMessage = '';
+  hasSuccess = false;
+  successMessage = '';
+
   ngOnInit(): void {
-    this.generalService.getHalls().subscribe((response) => {
-      if (response.status) {
-        this.halls = response.data;
+    this.generalService.getHalls().subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.halls = response.data;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch halls';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }

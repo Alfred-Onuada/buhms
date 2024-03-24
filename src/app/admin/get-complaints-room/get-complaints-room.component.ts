@@ -25,10 +25,28 @@ export class GetComplaintsRoomComponent implements OnInit {
     this.titleService.setTitle('Get Complaints Room');
   }
 
+  hasError = false;
+  errorMessage = '';
+  hasSuccess = false;
+  successMessage = '';
+
   ngOnInit(): void {
-    this.generalService.getHalls().subscribe((response) => {
-      if (response.status) {
-        this.halls = response.data;
+    this.generalService.getHalls().subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.halls = response.data;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch halls';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }
@@ -36,19 +54,42 @@ export class GetComplaintsRoomComponent implements OnInit {
   fetchRooms(event: any) {
     const hallId = event.target.value;
 
-    this.generalService.getRooms(hallId).subscribe((response) => {
-      if (response.status) {
-        this.rooms = response.data;
+    this.generalService.getRooms(hallId).subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.rooms = response.data;
+        }
+      },
+      error: (error) => {
+        this.hasError = true;
+        this.errorMessage = error.error.message;
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
+    
     });
   }
 
   fetchComplaints(event: any) {
     const roomId = event.target.value;
 
-    this.generalService.getComplaintsRoom(roomId).subscribe((response) => {
-      if (response.status) {
-        this.complaints = response.data;
+    this.generalService.getComplaintsRoom(roomId).subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.complaints = response.data;
+        }
+      },
+      error: (error) => {
+        this.hasError = true;
+        this.errorMessage = error.error.message;
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }

@@ -29,20 +29,46 @@ export class GetComplaintsHallComponent implements OnInit {
   successMessage = '';
 
   ngOnInit(): void {
-    this.generalService.getHalls().subscribe((response) => {
-      if (response.status) {
-        this.halls = response.data;
+    this.generalService.getHalls().subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.halls = response.data;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch halls';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
+    
     });
   }
 
   fetchComplaints(event: any) {
     const hallId = event.target.value;
 
-    this.generalService.getComplaints(hallId).subscribe((response) => {
-      if (response.status) {
-        this.complaints = response.data;
+    this.generalService.getComplaints(hallId).subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.complaints = response.data;
+        }
+      },
+      error: (error) => {
+        this.hasError = true;
+        this.errorMessage = error.error.message;
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
+    
     });
   }
 

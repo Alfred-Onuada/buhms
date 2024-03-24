@@ -29,9 +29,22 @@ export class GetRoomsComponent implements OnInit {
   successMessage = '';
 
   ngOnInit(): void {
-    this.generalService.getHalls().subscribe((response) => {
-      if (response.status) {
-        this.halls = response.data;
+    this.generalService.getHalls().subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.halls = response.data;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch halls';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }
@@ -39,9 +52,22 @@ export class GetRoomsComponent implements OnInit {
   fetchRooms(event: any) {
     const hallId = event.target.value;
 
-    this.generalService.getRooms(hallId).subscribe((response) => {
-      if (response.status) {
-        this.rooms = response.data;
+    this.generalService.getRooms(hallId).subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.rooms = response.data;
+        }
+      },
+      error: (error) => {
+        console.log(error);
+
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch rooms';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }

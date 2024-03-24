@@ -30,9 +30,20 @@ export class GetStudentsInHallComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.generalService.getHalls().subscribe((response) => {
-      if (response.status) {
-        this.halls = response.data;
+    this.generalService.getHalls().subscribe({
+      next: (response) => {
+        if (response.status) {
+          this.halls = response.data;
+        }
+      },
+      error: (error) => {
+        this.hasError = true;
+        this.errorMessage = 'Failed to fetch halls';
+
+        setTimeout(() => {
+          this.hasError = false;
+          this.errorMessage = '';
+        }, 3000);
       }
     });
   }
